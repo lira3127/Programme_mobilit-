@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#F5EFE6">
+<title>My Mobility Journal</title>
+<style>
+:root{--cream:#F5EFE6;--ivory:#FFFCF7;--sand:#E6D5C3;--wood:#8B6F57;--brown:#594536;--pink:#E8C3CC;--pale:#F6E4E7;--sage:#A9B6A0;--ink:#40352e;--muted:#89796d;--line:#e7dcd0;--shadow:0 8px 28px #5945360c}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--cream);color:var(--ink);font:15px/1.55 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}h1,h2,h3,.serif{font-family:Georgia,"Times New Roman",serif;font-weight:500}h1{font-size:clamp(2.15rem,5vw,3.5rem);letter-spacing:-.04em;line-height:1.08;margin:.2rem 0 .65rem}h2{font-size:1.65rem;margin:0 0 .35rem}h3{font-size:1.15rem;margin:0 0 .35rem}p{margin:.35rem 0 .8rem}.muted,.small{color:var(--muted)}.small{font-size:.83rem}.wrap{max-width:1180px;margin:auto;padding:20px}.hero{position:relative;overflow:hidden;padding:clamp(24px,5vw,54px);border:1px solid #e9dcd0;border-radius:28px;background:linear-gradient(125deg,#fffcf7 0%,#f8eee7 75%,#f4e0e4 100%);box-shadow:var(--shadow)}.hero:after{content:"";position:absolute;width:220px;height:220px;border:1px solid #d9bca9;border-radius:58% 42% 52% 48%;right:-55px;top:-80px;transform:rotate(22deg);opacity:.45}.eyebrow{text-transform:uppercase;letter-spacing:.16em;font-size:.72rem;color:var(--wood);font-weight:700}.hero p{max-width:590px;color:#76685c}.hero-top{display:flex;justify-content:space-between;gap:18px;align-items:flex-start;flex-wrap:wrap}.date-chip{background:#fffaf5d9;border:1px solid var(--line);border-radius:16px;padding:12px 16px;min-width:190px}.date-chip strong{display:block;font-size:1.05rem}.nav{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0 24px;position:sticky;top:0;z-index:5;padding:10px 0;background:linear-gradient(var(--cream) 70%,#f5efe600)}button,.button{font:inherit;cursor:pointer;border:1px solid #d9c8b8;background:var(--ivory);color:var(--brown);border-radius:12px;padding:10px 14px;min-height:42px;transition:background .18s,transform .18s,border-color .18s}button:hover,.button:hover{background:#f8e9e9;border-color:#d6b3bd}button:active{transform:scale(.98)}button.primary{background:var(--brown);color:#fffaf5;border-color:var(--brown)}button.primary:hover{background:#725943}button.soft{background:var(--pale)}button:disabled{opacity:.45;cursor:not-allowed}.nav button{border-radius:999px;padding:9px 15px}.nav button.active{background:var(--brown);color:white}.grid{display:grid;gap:16px}.summary-grid{grid-template-columns:repeat(4,minmax(0,1fr));margin:18px 0}.two{grid-template-columns:repeat(2,minmax(0,1fr))}.three{grid-template-columns:repeat(3,minmax(0,1fr))}.panel,.card,.stat{background:var(--ivory);border:1px solid var(--line);border-radius:20px;padding:20px;box-shadow:var(--shadow);min-width:0}.stat .value{font:2rem Georgia,serif;color:var(--brown);margin:5px 0}.stat .label{font-size:.82rem;color:var(--muted)}.section{scroll-margin-top:84px;margin:28px 0 34px}.section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:14px}.section-head p{margin:0;color:var(--muted)}.progress-track{height:9px;background:#eee3d9;border-radius:99px;overflow:hidden}.progress-fill{height:100%;width:0;background:linear-gradient(90deg,var(--wood),var(--pink));border-radius:99px;transition:width .2s}.progress-line{display:flex;justify-content:space-between;gap:12px;font-size:.84rem;margin:9px 0 7px}.day-controls{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.day-controls input,.year-control input,.timer-settings input{border:1px solid var(--line);border-radius:10px;padding:10px;background:#fffaf5;color:var(--ink);font:inherit;min-height:42px}.pill{display:inline-flex;align-items:center;padding:5px 10px;border-radius:99px;background:#f3e9df;color:var(--brown);font-size:.78rem;font-weight:650}.pill.rest{background:var(--pale)}.pill.done{background:#e4eadf}.exercise-list{display:grid;gap:10px}.exercise{background:#fffaf5;border:1px solid #eee3d9;border-radius:15px;padding:13px 14px}.exercise-top{display:flex;gap:12px;align-items:flex-start}.exercise input[type=checkbox],.series input[type=checkbox],.rest-confirm input{width:22px;height:22px;accent-color:var(--sage);flex-shrink:0;margin:2px 0 0;cursor:pointer}.exercise-title{font-weight:650}.exercise-desc{font-size:.85rem;color:var(--muted);margin-top:2px}.series-list{display:grid;gap:9px;margin-top:12px}.series{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;border-top:1px solid #eee3d9;padding-top:10px}.series-left{display:flex;align-items:center;gap:9px}.timer{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:10px;padding:10px;background:#f8f0e8;border-radius:12px}.timer-time{font:1.4rem ui-monospace,SFMono-Regular,monospace;min-width:76px;color:var(--brown);font-variant-numeric:tabular-nums}.timer button{min-height:36px;padding:6px 10px;font-size:.85rem}.timer input{width:76px;min-height:34px;padding:5px}.exercise-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.card-head{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}.card p{color:var(--muted);font-size:.9rem}.timer-global{display:flex;gap:12px;align-items:center;flex-wrap:wrap;background:#f7eee6;border-radius:15px;padding:14px;margin:14px 0}.timer-global .timer-time{font-size:1.8rem}.rest-day{background:linear-gradient(135deg,#fff9f8,#f6e4e7);border-color:#ead0d5}.rest-art{height:100px;display:flex;align-items:center;justify-content:center;color:#b98692;font:4rem Georgia,serif;letter-spacing:.12em}.calendar-wrap{overflow-x:auto;padding-bottom:8px}.calendar{display:grid;grid-template-rows:repeat(7,13px);grid-auto-flow:column;grid-auto-columns:13px;gap:4px;min-width:max-content;padding:12px 2px}.cal-cell{width:13px;height:13px;border-radius:4px;border:1px solid #e8dfd7;background:#f0ebe5;padding:0;min-height:0}.cal-cell.mobility{background:var(--sand);border-color:#d6bda7}.cal-cell.strength{background:var(--pink);border-color:#d7aab6}.cal-cell.rest{background:var(--pale);border-color:#e6c6ce}.cal-cell.partial{background:#e9e2da;border:1px dashed #b9a89a}.cal-cell.selected{outline:2px solid var(--brown);outline-offset:2px}.cal-cell:focus-visible{outline:2px solid var(--brown);outline-offset:2px}.calendar-months{display:grid;grid-template-columns:repeat(12,1fr);font-size:.72rem;color:var(--muted);min-width:330px;margin:0 0 0 22px}.calendar-layout{display:grid;grid-template-columns:auto 1fr;gap:8px;align-items:start}.week-labels{display:grid;grid-template-rows:repeat(7,13px);gap:4px;font-size:.66rem;color:var(--muted);padding-top:12px}.legend{display:flex;flex-wrap:wrap;gap:12px;margin:12px 0}.legend span{display:inline-flex;align-items:center;gap:6px;font-size:.8rem;color:var(--muted)}.swatch{width:13px;height:13px;border-radius:4px;display:inline-block;border:1px solid #dfd5cb}.swatch.mobility{background:var(--sand)}.swatch.strength{background:var(--pink)}.swatch.rest{background:var(--pale)}.swatch.partial{background:#e9e2da;border-style:dashed}.swatch.empty{background:#f0ebe5}.year-control{display:flex;gap:8px;align-items:center}.year-control strong{min-width:54px;text-align:center;font-size:1.2rem}.timeline{display:grid;gap:12px}.step{border:1px solid var(--line);border-radius:16px;padding:16px;background:#fffaf5;display:grid;grid-template-columns:36px 1fr auto;gap:12px;align-items:start}.step-num{width:34px;height:34px;border-radius:50%;background:#f3e3e2;display:grid;place-items:center;color:var(--brown);font-family:Georgia,serif}.step.active{border-color:#d7aab6;background:#fff7f7}.step.mastered{border-color:#cbd7c5}.step.mastered .step-num{background:#e4eadf}.step p{margin:.25rem 0;color:var(--muted);font-size:.9rem}.step-actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.step input{accent-color:var(--sage);width:19px;height:19px}.stats-month{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:5px;align-items:end;height:125px;padding:10px 0}.month-bar{height:100%;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:5px}.month-bar .bar{width:100%;max-width:28px;background:linear-gradient(180deg,var(--pink),var(--sand));border-radius:7px 7px 3px 3px;min-height:3px}.month-bar small{font-size:.65rem;color:var(--muted)}.month-bar em{font-style:normal;font-size:.68rem;color:var(--brown)}.footer{padding:20px 4px 36px;color:var(--muted);font-size:.8rem}.toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:var(--brown);color:white;padding:12px 18px;border-radius:14px;box-shadow:0 10px 35px #0002;z-index:20;max-width:calc(100% - 30px);opacity:0;pointer-events:none;transition:opacity .2s}.toast.show{opacity:1}.hidden{display:none!important}.rest-confirm{display:flex;gap:10px;align-items:center;margin:20px 0}.settings-row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.file-input{display:none}.notice{border-left:3px solid var(--pink);padding:9px 12px;background:#fbf2f0;border-radius:0 10px 10px 0;font-size:.86rem;color:#6f5a51}.inline-check{display:flex;align-items:center;gap:8px}.inline-check input{width:19px;height:19px;accent-color:var(--sage)}.tagline{font-style:italic;color:#856f60}.timer.done{background:#e9efe5}.timer.done .timer-time{color:#52664c}
+@media(max-width:800px){.summary-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.three{grid-template-columns:repeat(2,minmax(0,1fr))}.wrap{padding:13px}.panel,.card,.stat{padding:16px}.hero{border-radius:22px}.exercise-grid{grid-template-columns:1fr}.step{grid-template-columns:34px 1fr}.step-actions{grid-column:2}.nav{position:static}.calendar{grid-template-rows:repeat(7,11px);grid-auto-columns:11px;gap:3px}.cal-cell{width:11px;height:11px}.week-labels{grid-template-rows:repeat(7,11px);gap:3px}}
+@media(max-width:460px){.summary-grid,.two,.three{grid-template-columns:1fr}.date-chip{width:100%}.hero-top{display:block}.hero-top .date-chip{margin-top:16px}.nav button{flex:1;padding:8px 10px;font-size:.82rem}.timer{gap:6px}.timer button{padding:6px 8px}.stats-month{gap:3px}.month-bar small{font-size:.55rem}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="hero">
+  <div class="hero-top">
+    <div>
+      <div class="eyebrow">Un pas après l’autre · carnet de mouvement</div>
+      <h1>My Mobility Journal</h1>
+      <p class="tagline">« La régularité douce vaut mieux que la perfection. »</p>
+      <p>Un espace pour cultiver ta mobilité, ta force et ton équilibre, à ton rythme.</p>
+    </div>
+    <div class="date-chip"><span class="small">Aujourd’hui</span><strong id="todayDate">—</strong><span id="todayWeekday" class="small">—</span></div>
+  </div>
+  <div class="grid summary-grid">
+    <div class="stat"><div class="label">Séance sélectionnée</div><div class="value" id="sessionType" style="font-size:1.35rem">—</div><div class="small" id="sessionDateLabel">—</div></div>
+    <div class="stat"><div class="label">Progression du jour</div><div class="value" id="dayPercent">0 %</div><div class="progress-track"><div class="progress-fill" id="dayProgress"></div></div><div class="small" id="exerciseCount">0 exercice terminé</div></div>
+    <div class="stat"><div class="label">Jours validés cette semaine</div><div class="value" id="weekCount">0 / 6</div><div class="small">Repos validé compté séparément</div></div>
+    <div class="stat"><div class="label">Étape actuelle</div><div class="value" id="currentStage" style="font-size:1.15rem">Pompes · S1–4</div><div class="small" id="startDateLabel">Programme à configurer</div></div>
+  </div>
+</header>
+
+<nav class="nav" aria-label="Navigation principale">
+  <button class="active" data-go="dashboard">Accueil</button><button data-go="program">Programme du jour</button><button data-go="calendarSection">Calendrier annuel</button><button data-go="progressions">Progressions</button><button data-go="statistics">Statistiques</button>
+</nav>
+
+<section class="section" id="dashboard">
+  <div class="section-head"><div><div class="eyebrow">Ton espace du jour</div><h2>Revenir à ton rythme</h2><p>Choisis une date pour retrouver ou compléter ta séance.</p></div></div>
+  <div class="panel">
+    <div class="day-controls">
+      <button id="prevDay" aria-label="Jour précédent">← Jour précédent</button>
+      <input id="datePicker" type="date" aria-label="Choisir une date">
+      <button id="nextDay" aria-label="Jour suivant">Jour suivant →</button>
+      <button id="todayBtn" class="primary">Revenir à aujourd’hui</button>
+    </div>
+    <p id="dayMessage" class="notice" style="margin-top:14px">Les journées futures ne sont pas comptées comme des échecs.</p>
+  </div>
+</section>
+
+<section class="section" id="program">
+  <div class="section-head"><div><div class="eyebrow">Séance quotidienne</div><h2 id="programTitle">Programme du jour</h2><p id="programSubtitle"></p></div><span class="pill" id="statusPill">À compléter</span></div>
+  <div id="programContent"></div>
+</section>
+
+<section class="section" id="calendarSection">
+  <div class="section-head"><div><div class="eyebrow">Vue d’ensemble</div><h2>Calendrier annuel</h2><p>Chaque carré représente une journée. Sélectionne un jour pour ouvrir sa séance.</p></div><div class="year-control"><button id="prevYear" aria-label="Année précédente">←</button><strong id="yearLabel"></strong><button id="nextYear" aria-label="Année suivante">→</button></div></div>
+  <div class="panel">
+    <div class="grid summary-grid" style="margin-top:0">
+      <div class="stat"><div class="label">Jours validés</div><div class="value" id="yearDone">0</div></div>
+      <div class="stat"><div class="label">Mobilité</div><div class="value" id="yearMobility">0</div></div>
+      <div class="stat"><div class="label">Mobilité + renforcement</div><div class="value" id="yearStrength">0</div></div>
+      <div class="stat"><div class="label">Repos respectés</div><div class="value" id="yearRest">0</div></div>
+    </div>
+    <div class="small" id="yearPartial">0 séance incomplète</div>
+    <div class="legend"><span><i class="swatch mobility"></i>Mobilité validée</span><span><i class="swatch strength"></i>Mobilité + renforcement validés</span><span><i class="swatch rest"></i>Repos validé</span><span><i class="swatch partial"></i>Commencée, incomplète</span><span><i class="swatch empty"></i>Non renseignée</span></div>
+    <div id="calendarGrid" class="calendar-wrap" aria-label="Calendrier de l’année"></div>
+    <p class="small">Les journées non renseignées restent neutres. Les journées futures ne sont jamais considérées comme des échecs.</p>
+  </div>
+</section>
+
+<section class="section" id="progressions">
+  <div class="section-head"><div><div class="eyebrow">Progression personnelle</div><h2>Construire, sans se presser</h2><p>Les étapes changent uniquement lorsque tu les confirmes manuellement.</p></div></div>
+  <div class="grid two">
+    <div class="panel"><h3>Progression des pompes</h3><p class="small">La date est un repère, pas une obligation. Garde une technique stable avant d’augmenter la difficulté.</p><div id="pushTimeline" class="timeline"></div><div class="notice" style="margin-top:12px">Descente contrôlée, corps aligné. Passe à l’étape suivante uniquement lorsque tu maîtrises la technique sans douleur.</div></div>
+    <div class="panel"><h3>Progression de la planche</h3><p class="small">Durée cible actuelle : <strong id="plankTargetLabel">30 secondes</strong>. Posture et respiration passent avant la durée.</p><div id="plankTimeline" class="timeline"></div><div class="settings-row" style="margin-top:12px"><label for="plankCustom">Durée choisie (secondes)</label><input id="plankCustom" type="number" min="30" max="180" value="30" style="width:90px"><button id="savePlankCustom">Appliquer</button></div><p class="small">Pour les étapes des mois 4 et 5, choisis une durée dans la fourchette affichée. Aux étapes suivantes, augmente seulement si la technique reste maîtrisée.</p></div>
+  </div>
+  <div class="panel" style="margin-top:16px"><h3>Progression vers le handstand / ATR</h3><p class="small">Les bases se construisent progressivement. Aucun mouvement avancé n’est requis pour valider les étapes précédentes.</p><div id="handTimeline" class="timeline"></div><div class="notice" style="margin-top:12px">Sécurité : échauffe les poignets et les épaules, garde un espace dégagé, progresse graduellement et apprends les sorties de position avec un encadrement adapté. Arrête en cas de douleur.</div></div>
+</section>
+
+<section class="section" id="statistics">
+  <div class="section-head"><div><div class="eyebrow">Tes repères</div><h2>Statistiques</h2><p>Calculées uniquement à partir des journées enregistrées.</p></div></div>
+  <div class="grid summary-grid">
+    <div class="stat"><div class="label">Validées cette semaine</div><div class="value" id="statWeek">0</div></div>
+    <div class="stat"><div class="label">Validées ce mois-ci</div><div class="value" id="statMonth">0</div></div>
+    <div class="stat"><div class="label">Validées cette année</div><div class="value" id="statYear">0</div></div>
+    <div class="stat"><div class="label">Taux de complétion</div><div class="value" id="statRate">—</div></div>
+    <div class="stat"><div class="label">Séances mobilité réussies</div><div class="value" id="statMobility">0</div></div>
+    <div class="stat"><div class="label">Séances renforcement réussies</div><div class="value" id="statStrength">0</div></div>
+    <div class="stat"><div class="label">Jours de repos respectés</div><div class="value" id="statRest">0</div></div>
+    <div class="stat"><div class="label">Dernière séance validée</div><div class="value" id="statLast" style="font-size:1.05rem">—</div></div>
+  </div>
+  <div class="panel"><div class="section-head"><div><h3>Validations par mois</h3><p class="small">Nombre de journées entièrement validées pour l’année sélectionnée.</p></div></div><div id="monthlyChart" class="stats-month" aria-label="Graphique mensuel"></div><div id="monthlyLabels" style="display:grid;grid-template-columns:repeat(12,1fr);gap:5px;text-align:center;color:var(--muted);font-size:.65rem"></div></div>
+</section>
+
+<section class="section" id="dataSection">
+  <div class="section-head"><div><div class="eyebrow">Tes données</div><h2>Sauvegarde et transfert</h2><p>Tout reste dans le navigateur, sans compte ni serveur.</p></div></div>
+  <div class="panel">
+    <div class="settings-row"><button id="exportBtn" class="primary">Exporter les données JSON</button><label class="button" for="importFile">Importer un fichier JSON</label><input id="importFile" class="file-input" type="file" accept="application/json,.json"><button id="resetBtn">Réinitialiser les données</button></div>
+    <p class="small" style="margin-top:12px">La sauvegarde locale fonctionne sur ce navigateur et cet appareil. Elle ne synchronise pas automatiquement ton téléphone et ton ordinateur. Exporte régulièrement un fichier JSON pour conserver une copie.</p>
+    <p class="small" id="saveStatus" aria-live="polite">Sauvegarde locale activée.</p>
+    <div class="settings-row" style="margin-top:10px"><label for="startDate">Date de début du programme</label><input type="date" id="startDate"><button id="saveStartDate">Enregistrer la date</button></div>
+  </div>
+</section>
+<footer class="footer">My Mobility Journal · Les durées et exercices sont des repères généraux, à adapter à ton confort. Privilégie une technique contrôlée, prends plus de repos si nécessaire et arrête un mouvement douloureux.</footer>
+</div>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<script>
+"use strict";
+const STORAGE_KEY="myMobilityJournal.v1";
+const WEEKDAY_NAMES=["dimanche","lundi","mardi","mercredi","jeudi","vendredi","samedi"];
+const MONTHS=["janvier","février","mars","avril","mai","juin","juillet","août","septembre","octobre","novembre","décembre"];
+const WARMUP=[
+ ["neck","Cou : rotations douces"],["shoulders","Épaules : cercles avant et arrière"],["arms","Bras : grands cercles"],["back","Dos : rotations du buste et mouvement du chat-vache"],["hips","Hanches : rotations"],["knees","Genoux : 8 à 10 squats lents"],["ankles","Chevilles : mobilisations"],["wrists","Poignets : rotations et appuis doux au sol"]
+];
+const PUSH_STAGES=[
+ {title:"Semaines 1 à 4",short:"S1–4",desc:"Pompes sur les genoux · 3 séries de 5 à 8 répétitions."},
+ {title:"Semaines 5 à 8",short:"S5–8",desc:"Pompes sur les genoux · 3 séries de 8 à 12 répétitions."},
+ {title:"Semaines 9 à 12",short:"S9–12",desc:"Introduction des pompes inclinées sur un support stable."},
+ {title:"Mois suivants",short:"Suite",desc:"Diminution progressive de la hauteur du support, puis introduction des pompes classiques au sol."}
+];
+const PLANK_STAGES=[
+ {title:"Semaines 1 à 2",desc:"3 séries de 30 secondes.",min:30,max:30,target:30},
+ {title:"Semaines 3 à 4",desc:"3 séries de 35 secondes.",min:35,max:35,target:35},
+ {title:"Semaines 5 à 6",desc:"3 séries de 40 secondes.",min:40,max:40,target:40},
+ {title:"Semaines 7 à 8",desc:"3 séries de 45 secondes.",min:45,max:45,target:45},
+ {title:"Semaines 9 à 10",desc:"3 séries de 50 secondes.",min:50,max:50,target:50},
+ {title:"Semaines 11 à 12",desc:"3 séries de 55 secondes.",min:55,max:55,target:55},
+ {title:"Mois 4",desc:"3 séries de 60 à 75 secondes.",min:60,max:75,target:60},
+ {title:"Mois 5",desc:"3 séries de 75 à 90 secondes.",min:75,max:90,target:75},
+ {title:"Mois suivants",desc:"Progression graduelle vers 2 minutes, puis éventuellement 3 minutes.",min:90,max:180,target:90}
+];
+const HAND_STAGES=[
+ {title:"Habituer les poignets et les mains",desc:"Mobilisations et appuis doux, en augmentant progressivement la tolérance."},
+ {title:"Renforcer les épaules",desc:"Chien tête en bas et planche bras tendus, avec un alignement confortable."},
+ {title:"Renforcer le gainage",desc:"Planche et position creuse sur le dos, sans bloquer la respiration."},
+ {title:"Apprendre les placements et sorties",desc:"Découvrir les placements et les sorties de position avec un encadrement adapté."},
+ {title:"Découvrir l’ATR contre un mur",desc:"Approche progressive, sans montée brusque et avec une zone dégagée."},
+ {title:"Travailler équilibre et alignement",desc:"Priorité au contrôle et à l’alignement avant de chercher à tenir longtemps."}
+];
+const stateDefaults=()=>({days:{},progress:{push:0,plank:0,hand:Array(HAND_STAGES.length).fill(false),plankCustom:null,startDate:todayKey()},timerSettings:{},version:1});
+let db=loadDB(), selectedDate=todayKey(), selectedYear=new Date().getFullYear(), toastTimer=null, timerObjects={};
+function todayKey(d=new Date()){return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`}
+function parseKey(k){const [y,m,d]=k.split("-").map(Number);return new Date(y,m-1,d,12,0,0,0)}
+function addDays(k,n){const d=parseKey(k);d.setDate(d.getDate()+n);return todayKey(d)}
+function dateText(k,opts={weekday:"long",day:"numeric",month:"long",year:"numeric"}){return parseKey(k).toLocaleDateString("fr-FR",opts)}
+function dayType(k){const w=parseKey(k).getDay();return w===0?"rest":([1,3,5].includes(w)?"strength":"mobility")}
+function typeName(t){return t==="strength"?"Mobilité + renforcement":t==="mobility"?"Mobilité":"Repos"}
+function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function loadDB(){try{const raw=localStorage.getItem(STORAGE_KEY);if(!raw)return stateDefaults();const v=JSON.parse(raw);if(!v||typeof v!=="object"||!v.days||typeof v.days!=="object")return stateDefaults();return { ...stateDefaults(),...v,days:v.days,progress:{...stateDefaults().progress,...(v.progress||{})},timerSettings:v.timerSettings&&typeof v.timerSettings==="object"?v.timerSettings:{}}}catch(e){return stateDefaults()}}
+function saveDB(){try{localStorage.setItem(STORAGE_KEY,JSON.stringify(db));document.getElementById("saveStatus").textContent="Sauvegardé automatiquement dans ce navigateur."}catch(e){document.getElementById("saveStatus").textContent="Impossible de sauvegarder : le stockage local semble indisponible."}}
+function blankDay(k){return {date:k,checks:{},sets:{},restConfirmed:false,started:false,updatedAt:null}}
+function getDay(k=selectedDate){if(!db.days[k])db.days[k]=blankDay(k);return db.days[k]}
+function isFuture(k){return k>todayKey()}
+function makeTimer(id,seconds,kind="countdown",onEnd=null){
+ if(timerObjects[id]){timerObjects[id].destroy();delete timerObjects[id]}
+ const obj={id,remaining:Math.max(0,seconds)*1000,duration:Math.max(0,seconds)*1000,running:false,endAt:0,kind,interval:null,onEnd,done:false,
+  destroy(){if(this.interval)clearInterval(this.interval)},
+  start(){if(this.done&&this.remaining<=0)this.remaining=this.duration;if(this.remaining<=0){this.finish();return}this.running=true;this.endAt=Date.now()+this.remaining;this.done=false;this.tick();this.interval=setInterval(()=>this.tick(),200);},
+  pause(){if(!this.running)return;this.remaining=Math.max(0,this.endAt-Date.now());this.running=false;if(this.interval)clearInterval(this.interval);this.interval=null;this.tick()},
+  reset(){this.running=false;this.done=false;if(this.interval)clearInterval(this.interval);this.interval=null;this.remaining=this.duration;this.tick()},
+  add(sec){if(this.running){this.endAt+=sec*1000;this.remaining=Math.max(0,this.endAt-Date.now())}else{this.remaining=Math.max(0,this.remaining+sec*1000);if(this.remaining>0)this.done=false}this.tick()},
+  tick(){if(this.running){this.remaining=Math.max(0,this.endAt-Date.now());if(this.remaining<=0){this.finish();return}}const el=document.querySelector(`[data-timer-display="${CSS.escape(this.id)}"]`);if(el)el.textContent=formatTime(this.remaining);const wrap=document.querySelector(`[data-timer-wrap="${CSS.escape(this.id)}"]`);if(wrap)wrap.classList.toggle("done",this.done);const btn=document.querySelector(`[data-timer-toggle="${CSS.escape(this.id)}"]`);if(btn)btn.textContent=this.running?"Pause":(this.remaining<this.duration&&this.remaining>0?"Reprendre":"Démarrer")},
+  finish(){this.remaining=0;this.running=false;this.done=true;if(this.interval)clearInterval(this.interval);this.interval=null;this.tick();if(this.onEnd)this.onEnd();beep();showToast("Temps écoulé. Prends un instant avant de continuer.")}
+ };
+ timerObjects[id]=obj;return obj;
+}
+function formatTime(ms){let s=Math.ceil(Math.max(0,ms)/1000);return `${String(Math.floor(s/60)).padStart(2,"0")}:${String(s%60).padStart(2,"0")}`}
+function beep(){try{const C=window.AudioContext||window.webkitAudioContext;if(!C)return;const ctx=new C(),o=ctx.createOscillator(),g=ctx.createGain();o.connect(g);g.connect(ctx.destination);o.frequency.value=660;g.gain.value=.035;o.start();o.stop(ctx.currentTime+.13);o.onended=()=>ctx.close()}catch(e){}}
+function showToast(s){const el=document.getElementById("toast");el.textContent=s;el.classList.add("show");clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.classList.remove("show"),2600)}
+function escId(s){return s.replace(/[^a-zA-Z0-9_-]/g,"-")}
+function timerHTML(id,seconds,options={}){const setting=db.timerSettings[id]??seconds;const cfg=options.settings!==false;return `<div class="timer" data-timer-wrap="${id}" data-timer-duration="${setting}"><span class="timer-time" data-timer-display="${id}">${formatTime(setting*1000)}</span><button type="button" data-timer-toggle="${id}">Démarrer</button><button type="button" data-timer-reset="${id}">Réinitialiser</button>${options.rest?`<button type="button" data-timer-add="${id}" data-add="15">+15 s</button>`:""}${cfg?`<label class="small" for="setting-${id}">Durée</label><input id="setting-${id}" data-timer-setting="${id}" type="number" min="${options.min||5}" max="${options.max||600}" step="5" value="${setting}" aria-label="Durée en secondes"> <span class="small">sec</span>`:""}</div>`}
+function getPlankTarget(){const s=PLANK_STAGES[db.progress.plank]||PLANK_STAGES[0];let v=Number(db.progress.plankCustom);if(!Number.isFinite(v))v=s.target;return Math.min(s.max,Math.max(s.min,v))}
+function exerciseIsChecked(day,id){return !!day.checks[id]}
+function setCheck(id,checked){const day=getDay();day.checks[id]=checked;day.started=true;day.updatedAt=new Date().toISOString();saveDB();renderAll(false)}
+function setSeries(id,n,checked){const day=getDay();if(!day.sets[id])day.sets[id]=[];day.sets[id][n]=checked;day.started=true;day.updatedAt=new Date().toISOString();saveDB();renderAll(false)}
+function setOf(day,id,n){return !!(day.sets[id]&&day.sets[id][n])}
+function planItems(k){
+ const type=dayType(k),items=[];
+ if(type==="rest")return items;
+ WARMUP.forEach(([id,label])=>items.push({id:"warm-"+id,label,section:"Échauffement",desc:"Mobilisation douce, sans forcer.",kind:"check"}));
+ if(type==="strength"){
+  for(let i=0;i<3;i++)items.push({id:"push-"+i,label:`Pompes sur les genoux · série ${i+1}`,section:"Renforcement",desc:`${db.progress.push===0?"5 à 8":db.progress.push===1?"8 à 12":"Selon l’étape actuelle"} répétitions · Descente contrôlée, corps aligné.`,kind:"set"});
+  for(let i=0;i<3;i++)items.push({id:"plank-"+i,label:`Planche · série ${i+1}`,section:"Gainage",desc:`${getPlankTarget()} secondes · Abdominaux contractés, dos aligné, respiration régulière.`,kind:"set"});
+  const hand=[
+   {id:"weight",title:"Appuis à quatre pattes",desc:"2 séries de 8 à 10 transferts de poids.",sets:2,reps:"8 à 10 transferts",hold:false,rest:45},
+   {id:"downDog",title:"Chien tête en bas",desc:"3 séries de 10 à 20 secondes.",sets:3,reps:"10 à 20 s",hold:true,rest:45},
+   {id:"straightPlank",title:"Planche bras tendus",desc:"2 séries de 10 à 20 secondes.",sets:2,reps:"10 à 20 s",hold:true,rest:45},
+   {id:"hollow",title:"Gainage sur le dos",desc:"3 séries de 10 à 20 secondes.",sets:3,reps:"10 à 20 s",hold:true,rest:45}
+  ];
+  hand.forEach(ex=>items.push({id:"hand-"+ex.id,label:ex.title,section:"Préparation handstand",desc:ex.desc,kind:"multi",...ex}));
+ }
+ return items;
+}
+function requiredStatus(k){
+ const t=dayType(k),d=db.days[k];if(!d)return {status:"empty",total:0,done:0,percent:0};
+ if(t==="rest")return {status:d.restConfirmed?"rest":"empty",total:1,done:d.restConfirmed?1:0,percent:d.restConfirmed?100:0};
+ const items=planItems(k);let total=0,done=0;
+ for(const it of items){if(it.kind==="check"){total++;if(d.checks[it.id])done++}else if(it.kind==="set"){total++;if(setOf(d,it.id,0))done++}else if(it.kind==="multi"){for(let i=0;i<it.sets;i++){total++;if(setOf(d,it.id,i))done++}}}
+ return {status:done===total&&total>0?"done":done>0||d.started?"partial":"empty",total,done,percent:total?Math.round(done/total*100):0};
+}
+function statusClass(k){const s=requiredStatus(k).status;if(s==="done")return dayType(k)==="strength"?"strength":"mobility";if(s==="rest")return"rest";if(s==="partial")return"partial";return""}
+function renderAll(full=true){renderHeader();renderProgram();renderCalendar();renderStats();renderProgressions();if(full)document.getElementById("datePicker").value=selectedDate}
+function renderHeader(){
+ const now=todayKey();document.getElementById("todayDate").textContent=dateText(now,{day:"numeric",month:"long",year:"numeric"});document.getElementById("todayWeekday").textContent=dateText(now,{weekday:"long"});
+ const t=dayType(selectedDate),s=requiredStatus(selectedDate);document.getElementById("sessionType").textContent=typeName(t);document.getElementById("sessionDateLabel").textContent=dateText(selectedDate,{weekday:"long",day:"numeric",month:"long"});document.getElementById("dayPercent").textContent=s.percent+" %";document.getElementById("dayProgress").style.width=s.percent+"%";document.getElementById("exerciseCount").textContent=`${s.done} / ${s.total} élément${s.total>1?"s":""} terminé${s.done>1?"s":""}`;
+ let week=0;const d=parseKey(now),monday=new Date(d);monday.setDate(d.getDate()-(d.getDay()+6)%7);for(let i=0;i<7;i++){const k=todayKey(new Date(monday.getFullYear(),monday.getMonth(),monday.getDate()+i,12));if(!isFuture(k)&&["done","rest"].includes(requiredStatus(k).status))week++}
+ document.getElementById("weekCount").textContent=`${week} / 7`;
+ const ps=PUSH_STAGES[db.progress.push]||PUSH_STAGES[0];document.getElementById("currentStage").textContent="Pompes · "+ps.short;document.getElementById("startDateLabel").textContent=db.progress.startDate?"Début : "+dateText(db.progress.startDate,{day:"numeric",month:"short",year:"numeric"}):"Date de début non définie";
+ document.getElementById("datePicker").value=selectedDate;
+}
+function checkboxHTML(id,label,checked,extra=""){return `<label class="exercise-top"><input type="checkbox" data-check="${id}" ${checked?"checked":""}><span><span class="exercise-title">${escapeHtml(label)}</span>${extra?`<span class="exercise-desc">${escapeHtml(extra)}</span>`:""}</span></label>`}
+function renderWarmup(day){return `<div class="panel"><div class="section-head"><div><h3>Échauffement · 7 à 9 minutes</h3><p>Réveille doucement les articulations avant de commencer.</p></div><span class="pill">${WARMUP.filter(([id])=>day.checks["warm-"+id]).length}/8</span></div><div class="exercise-list">${WARMUP.map(([id,label])=>`<div class="exercise">${checkboxHTML("warm-"+id,label,!!day.checks["warm-"+id],"Mouvement contrôlé, dans une amplitude confortable.")}</div>`).join("")}</div><div class="timer-global"><div><div class="small">Chronomètre d’échauffement</div>${timerHTML("warmup-global",480,{settings:true,min:420,max:540})}</div></div></div>`}
+function renderStrength(day){
+ let html=`<div class="grid two">`;
+ html+=`<div class="panel"><div class="section-head"><div><h3>Pompes sur les genoux</h3><p>Objectif : 3 séries · ${db.progress.push===0?"5 à 8 répétitions":db.progress.push===1?"8 à 12 répétitions":"selon ton étape actuelle"}.</p></div></div><p class="small">Descente contrôlée, corps aligné.</p><div class="series-list">${[0,1,2].map(i=>`<div class="series"><div class="series-left"><input type="checkbox" data-set="push-${i}" data-set-index="0" ${setOf(day,"push-"+i,0)?"checked":""} aria-label="Valider la série ${i+1} de pompes"><span>Série ${i+1} · ${db.progress.push===0?"5–8":db.progress.push===1?"8–12":"adaptées à l’étape"} répétitions</span></div><button type="button" data-start-rest="push-rest-${i}">Repos 60–90 s</button></div>${timerHTML("push-rest-"+i,75,{settings:true,min:60,max:180,rest:true})}`).join("")}</div></div>`;
+ html+=`<div class="panel"><div class="section-head"><div><h3>Gainage · planche</h3><p>3 séries · cible actuelle : ${getPlankTarget()} secondes.</p></div></div><p class="small">Abdominaux contractés, dos aligné, respiration régulière.</p><div class="series-list">${[0,1,2].map(i=>`<div class="series"><div class="series-left"><input type="checkbox" data-set="plank-${i}" data-set-index="0" ${setOf(day,"plank-"+i,0)?"checked":""} aria-label="Valider la série ${i+1} de planche"><span>Série ${i+1} · ${getPlankTarget()} s</span></div></div>${timerHTML("plank-hold-"+i,getPlankTarget(),{settings:false})}${timerHTML("plank-rest-"+i,45,{settings:true,min:45,max:300,rest:true})}`).join("")}</div></div></div>`;
+ return html;
+}
+function renderHand(day){
+ const exs=[
+  {id:"weight",title:"Appuis à quatre pattes",desc:"2 séries de 8 à 10 transferts de poids.",sets:2,hold:false,rest:45,target:10},
+  {id:"downDog",title:"Chien tête en bas",desc:"3 séries de 10 à 20 secondes.",sets:3,hold:true,rest:45,target:15},
+  {id:"straightPlank",title:"Planche bras tendus",desc:"2 séries de 10 à 20 secondes.",sets:2,hold:true,rest:45,target:15},
+  {id:"hollow",title:"Gainage sur le dos",desc:"3 séries de 10 à 20 secondes.",sets:3,hold:true,rest:45,target:15}
+ ];
+ return `<div class="panel" style="margin-top:16px"><div class="section-head"><div><h3>Préparation handstand / ATR</h3><p>Travaille les appuis et le contrôle avant de chercher l’équilibre.</p></div></div><div class="exercise-grid">${exs.map(ex=>`<article class="card"><div class="card-head"><div><h3>${ex.title}</h3><p>${ex.desc}</p></div><span class="pill">${ex.sets} séries</span></div><div class="series-list">${Array.from({length:ex.sets},(_,i)=>`<div class="series"><div class="series-left"><input type="checkbox" data-set="hand-${ex.id}" data-set-index="${i}" ${setOf(day,"hand-"+ex.id,i)?"checked":""} aria-label="Valider ${ex.title}, série ${i+1}"><span>Série ${i+1} · ${ex.hold?ex.target+" s":ex.target+" transferts"}</span></div></div>${ex.hold?timerHTML(`hand-hold-${ex.id}-${i}`,ex.target,{settings:true,min:10,max:20}):""}${timerHTML(`hand-rest-${ex.id}-${i}`,45,{settings:true,min:45,max:300,rest:true})}`).join("")}</div></article>`).join("")}</div></div>`;
+}
+function renderMobility(day,type){
+ return `<div class="panel"><div class="section-head"><div><h3>Mobilité douce · 7 à 9 minutes d’échauffement</h3><p>${type==="mobility"&&parseKey(selectedDate).getDay()===4?"Mobilité douce et récupération. Mouvements confortables, sans forcer.":"Mobilité douce, contrôle et régularité."}</p></div></div>${renderWarmup(day)}<div class="timer-global"><div><div class="small">Chronomètre global de séance</div>${timerHTML("mobility-global",900,{settings:true,min:60,max:7200})}</div></div><p class="notice">Une séance partielle peut être enregistrée, mais elle ne sera pas considérée comme entièrement validée dans le calendrier.</p></div>`;
+}
+function renderProgram(){
+ const day=getDay(),type=dayType(selectedDate),s=requiredStatus(selectedDate);
+ document.getElementById("programTitle").textContent=type==="rest"?"Rest & Recovery":type==="strength"?"Mobilité + renforcement":"Séance de mobilité";
+ document.getElementById("programSubtitle").textContent=dateText(selectedDate,{weekday:"long",day:"numeric",month:"long",year:"numeric"});
+ const pill=document.getElementById("statusPill");pill.textContent=s.status==="done"||s.status==="rest"?"Journée validée":s.status==="partial"?"Séance incomplète":"À compléter";pill.className="pill "+(s.status==="done"||s.status==="rest"?"done":s.status==="partial"?"rest":"");
+ const root=document.getElementById("programContent");
+ if(type==="rest"){root.innerHTML=`<div class="panel rest-day"><div class="rest-art" aria-hidden="true">☾ ✧ ☼</div><div class="eyebrow">Une pause fait partie du progrès</div><h2>Rest & Recovery</h2><p style="font-size:1.08rem;color:var(--brown)">Aujourd’hui, priorité à la récupération.</p><p>Accorde-toi une journée sans séance planifiée. Le repos est une catégorie à part entière dans ton journal.</p><label class="rest-confirm"><input type="checkbox" id="restConfirm" ${day.restConfirmed?"checked":""}><span>Je confirme avoir respecté mon jour de repos.</span></label><button id="validateRest" class="primary">Valider ma journée de repos</button></div>`;document.getElementById("restConfirm").addEventListener("change",e=>{day.restConfirmed=e.target.checked;day.started=e.target.checked;day.updatedAt=new Date().toISOString();saveDB();renderAll(false)});document.getElementById("validateRest").addEventListener("click",()=>{day.restConfirmed=true;day.started=true;day.updatedAt=new Date().toISOString();saveDB();renderAll(false);showToast("Journée de repos validée.")});return}
+ root.innerHTML=renderMobility(day,type)+(type==="strength"?renderStrength(day)+renderHand(day):"");
+ root.querySelectorAll("[data-check]").forEach(el=>el.addEventListener("change",()=>setCheck(el.dataset.check,el.checked)));
+ root.querySelectorAll("[data-set]").forEach(el=>el.addEventListener("change",()=>setSeries(el.dataset.set,Number(el.dataset.setIndex),el.checked)));
+ root.querySelectorAll("[data-start-rest]").forEach(el=>el.addEventListener("click",()=>{const id=el.dataset.startRest;const t=timerObjects[id];if(t)t.start();showToast("Repos lancé.")}));
+ bindTimers(root);
+}
+function bindTimers(root){
+ root.querySelectorAll("[data-timer-toggle]").forEach(btn=>btn.addEventListener("click",()=>{const t=timerObjects[btn.dataset.timerToggle];if(!t)return;t.running?t.pause():t.start();}));
+ root.querySelectorAll("[data-timer-reset]").forEach(btn=>btn.addEventListener("click",()=>timerObjects[btn.dataset.timerReset]?.reset()));
+ root.querySelectorAll("[data-timer-add]").forEach(btn=>btn.addEventListener("click",()=>timerObjects[btn.dataset.timerAdd]?.add(Number(btn.dataset.add)||15)));
+ root.querySelectorAll("[data-timer-setting]").forEach(input=>input.addEventListener("change",()=>{const id=input.dataset.timerSetting;const val=Math.max(Number(input.min)||1,Math.min(Number(input.max)||7200,Number(input.value)||1));input.value=val;db.timerSettings[id]=val;saveDB();const t=timerObjects[id];if(t){t.duration=val*1000;t.reset()}else{const disp=root.querySelector(`[data-timer-display="${CSS.escape(id)}"]`);if(disp)disp.textContent=formatTime(val*1000)}}));
+ root.querySelectorAll("[data-timer-display]").forEach(el=>{const id=el.dataset.timerDisplay;let seconds=Number(db.timerSettings[id]);if(!Number.isFinite(seconds)){const input=root.querySelector(`[data-timer-setting="${CSS.escape(id)}"]`);const wrap=root.querySelector(`[data-timer-wrap="${CSS.escape(id)}"]`);seconds=input?Number(input.value):Number(wrap?.dataset.timerDuration)||60}if(!timerObjects[id])makeTimer(id,seconds,"countdown",()=>{});else{const t=timerObjects[id];if(!t.running)t.tick()}});
+}
+function renderCalendar(){
+ document.getElementById("yearLabel").textContent=selectedYear;
+ const first=new Date(selectedYear,0,1,12),days=new Date(selectedYear+1,0,1,12)-first;const n=Math.round(days/86400000);
+ let startOffset=(first.getDay()+6)%7;let html=`<div class="calendar-layout"><div class="week-labels"><span>L</span><span>M</span><span>M</span><span>J</span><span>V</span><span>S</span><span>D</span></div><div><div class="calendar-months">${MONTHS.map(m=>`<span>${m.slice(0,3)}</span>`).join("")}</div><div class="calendar" style="grid-template-columns:repeat(${Math.ceil((n+startOffset)/7)},13px)">`;
+ for(let i=0;i<startOffset;i++)html+=`<span aria-hidden="true"></span>`;
+ for(let i=0;i<n;i++){const k=todayKey(new Date(selectedYear,0,1+i,12));const s=requiredStatus(k);const cl=statusClass(k);const label=`${dateText(k)} · ${s.status==="done"||s.status==="rest"?"validée":s.status==="partial"?"incomplète":"non renseignée"}`;html+=`<button type="button" class="cal-cell ${cl} ${k===selectedDate?"selected":""}" data-cal-date="${k}" title="${escapeHtml(label)}" aria-label="${escapeHtml(label)}"></button>`}
+ html+=`</div></div></div>`;document.getElementById("calendarGrid").innerHTML=html;
+ document.querySelectorAll("[data-cal-date]").forEach(b=>b.addEventListener("click",()=>selectDate(b.dataset.calDate,true)));
+ const records=Object.keys(db.days).filter(k=>k.startsWith(String(selectedYear)+"-"));let mob=0,str=0,rest=0,partial=0;
+ records.forEach(k=>{const s=requiredStatus(k),t=dayType(k);if(s.status==="done"){if(t==="mobility")mob++;if(t==="strength")str++}if(s.status==="rest")rest++;if(s.status==="partial")partial++});
+ document.getElementById("yearDone").textContent=mob+str+rest;document.getElementById("yearMobility").textContent=mob;document.getElementById("yearStrength").textContent=str;document.getElementById("yearRest").textContent=rest;document.getElementById("yearPartial").textContent=`${partial} séance${partial!==1?"s":""} incomplète${partial!==1?"s":""}`;
+}
+function allKeys(){return Object.keys(db.days).sort()}
+function validKeys(){return allKeys().filter(k=>["done","rest"].includes(requiredStatus(k).status)&&!isFuture(k))}
+function weekStart(k){const d=parseKey(k);d.setDate(d.getDate()-(d.getDay()+6)%7);return todayKey(d)}
+function renderStats(){
+ const now=todayKey(),ws=weekStart(now),we=addDays(ws,6),month=now.slice(0,7),year=now.slice(0,4),valid=validKeys();
+ const week=valid.filter(k=>k>=ws&&k<=we).length,mon=valid.filter(k=>k.slice(0,7)===month).length,yr=valid.filter(k=>k.slice(0,4)===year).length;
+ const mob=valid.filter(k=>dayType(k)==="mobility"&&requiredStatus(k).status==="done").length;
+ const str=valid.filter(k=>dayType(k)==="strength"&&requiredStatus(k).status==="done").length;
+ const rest=valid.filter(k=>dayType(k)==="rest"&&requiredStatus(k).status==="rest").length;
+ const known=allKeys().filter(k=>!isFuture(k)&&requiredStatus(k).status!=="empty");const done=known.filter(k=>["done","rest"].includes(requiredStatus(k).status)).length;
+ const last=valid.filter(k=>dayType(k)!=="rest").sort().at(-1);
+ document.getElementById("statWeek").textContent=week;document.getElementById("statMonth").textContent=mon;document.getElementById("statYear").textContent=yr;document.getElementById("statRate").textContent=known.length?Math.round(done/known.length*100)+" %":"—";document.getElementById("statMobility").textContent=mob;document.getElementById("statStrength").textContent=str;document.getElementById("statRest").textContent=rest;document.getElementById("statLast").textContent=last?dateText(last,{day:"numeric",month:"short",year:"numeric"}):"—";
+ const counts=Array(12).fill(0);valid.filter(k=>k.startsWith(selectedYear+"-")).forEach(k=>counts[parseKey(k).getMonth()]++);
+ const max=Math.max(1,...counts);document.getElementById("monthlyChart").innerHTML=counts.map((v,i)=>`<div class="month-bar" title="${MONTHS[i]} : ${v} validation${v>1?"s":""}"><em>${v}</em><div class="bar" style="height:${Math.max(3,v/max*78)}px"></div></div>`).join("");document.getElementById("monthlyLabels").innerHTML=MONTHS.map(m=>`<span>${m.slice(0,3)}</span>`).join("");
+}
+function renderProgressions(){
+ document.getElementById("pushTimeline").innerHTML=PUSH_STAGES.map((s,i)=>`<div class="step ${db.progress.push===i?"active":""} ${i<db.progress.push?"mastered":""}"><div class="step-num">${i<db.progress.push?"✓":i+1}</div><div><strong>${s.title}</strong><p>${s.desc}</p>${i===db.progress.push?`<span class="pill">Étape actuelle</span>`:""}</div><div class="step-actions">${i===db.progress.push?`<button data-push-next="${i}" ${i===PUSH_STAGES.length-1?"disabled":""}>Étape maîtrisée, passer à la suivante</button>`:i<db.progress.push?`<span class="small">Confirmée</span>`:""}</div></div>`).join("");
+ document.getElementById("plankTimeline").innerHTML=PLANK_STAGES.map((s,i)=>`<div class="step ${db.progress.plank===i?"active":""} ${i<db.progress.plank?"mastered":""}"><div class="step-num">${i<db.progress.plank?"✓":i+1}</div><div><strong>${s.title}</strong><p>${s.desc}</p>${i===db.progress.plank?`<span class="pill">Étape actuelle</span>`:""}</div><div class="step-actions">${i===db.progress.plank?`<button data-plank-next="${i}" ${i===PLANK_STAGES.length-1?"disabled":""}>Étape maîtrisée</button>`:i<db.progress.plank?`<span class="small">Confirmée</span>`:""}</div></div>`).join("");
+ document.getElementById("handTimeline").innerHTML=HAND_STAGES.map((s,i)=>`<div class="step ${db.progress.hand[i]?"mastered":i===db.progress.hand.findIndex(v=>!v)?"active":""}"><div class="step-num">${db.progress.hand[i]?"✓":i+1}</div><div><strong>${s.title}</strong><p>${s.desc}</p><label class="inline-check"><input type="checkbox" data-hand-step="${i}" ${db.progress.hand[i]?"checked":""}> Étape acquise</label></div><div class="step-actions">${!db.progress.hand[i]&&i===db.progress.hand.findIndex(v=>!v)?`<button data-hand-next="${i}">Passer à l’étape suivante</button>`:db.progress.hand[i]?`<span class="small">Acquise</span>`:""}</div></div>`).join("");
+ document.getElementById("plankTargetLabel").textContent=getPlankTarget()+" secondes";document.getElementById("plankCustom").value=getPlankTarget();
+ document.querySelectorAll("[data-push-next]").forEach(b=>b.addEventListener("click",()=>{if(db.progress.push<PUSH_STAGES.length-1){db.progress.push++;saveDB();renderAll(false);showToast("Étape des pompes mise à jour.")}}));
+ document.querySelectorAll("[data-plank-next]").forEach(b=>b.addEventListener("click",()=>{if(db.progress.plank<PLANK_STAGES.length-1){db.progress.plank++;db.progress.plankCustom=null;saveDB();renderAll(false);showToast("Étape de la planche mise à jour.")}}));
+ document.querySelectorAll("[data-hand-step]").forEach(b=>b.addEventListener("change",()=>{db.progress.hand[Number(b.dataset.handStep)]=b.checked;saveDB();renderAll(false)}));
+ document.querySelectorAll("[data-hand-next]").forEach(b=>b.addEventListener("click",()=>{const i=Number(b.dataset.handNext);db.progress.hand[i]=true;saveDB();renderAll(false);showToast("Étape handstand marquée comme acquise.")}));
+}
+function selectDate(k,scroll){if(k!==selectedDate){Object.values(timerObjects).forEach(t=>t.destroy());timerObjects={}}selectedDate=k;selectedYear=parseKey(k).getFullYear();renderAll(true);if(scroll)document.getElementById("program").scrollIntoView({behavior:"smooth",block:"start"})}
+document.querySelectorAll("[data-go]").forEach(b=>b.addEventListener("click",()=>{document.querySelectorAll("[data-go]").forEach(x=>x.classList.toggle("active",x===b));document.getElementById(b.dataset.go).scrollIntoView({behavior:"smooth",block:"start"})}));
+document.getElementById("prevDay").addEventListener("click",()=>selectDate(addDays(selectedDate,-1),false));
+document.getElementById("nextDay").addEventListener("click",()=>selectDate(addDays(selectedDate,1),false));
+document.getElementById("todayBtn").addEventListener("click",()=>selectDate(todayKey(),false));
+document.getElementById("datePicker").addEventListener("change",e=>{if(e.target.value)selectDate(e.target.value,false)});
+document.getElementById("prevYear").addEventListener("click",()=>{selectedYear--;renderCalendar();renderStats()});
+document.getElementById("nextYear").addEventListener("click",()=>{selectedYear++;renderCalendar();renderStats()});
+document.getElementById("savePlankCustom").addEventListener("click",()=>{const s=PLANK_STAGES[db.progress.plank],v=Number(document.getElementById("plankCustom").value);if(!Number.isFinite(v)||v<s.min||v>s.max){showToast(`Choisis une durée entre ${s.min} et ${s.max} secondes.`);return}db.progress.plankCustom=v;saveDB();renderAll(false);showToast("Durée cible de la planche enregistrée.")});
+document.getElementById("startDate").value=db.progress.startDate||"";
+document.getElementById("saveStartDate").addEventListener("click",()=>{const v=document.getElementById("startDate").value;if(!v){showToast("Choisis une date de début.");return}db.progress.startDate=v;saveDB();renderAll(false);showToast("Date de début enregistrée.")});
+document.getElementById("exportBtn").addEventListener("click",()=>{const blob=new Blob([JSON.stringify(db,null,2)],{type:"application/json"});const url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download=`my-mobility-journal-${todayKey()}.json`;document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url);showToast("Export JSON préparé.")});
+document.getElementById("importFile").addEventListener("change",async e=>{const f=e.target.files&&e.target.files[0];if(!f)return;try{if(f.size>10*1024*1024)throw Error("Fichier trop volumineux (maximum 10 Mo).");const v=JSON.parse(await f.text());if(!v||typeof v!=="object"||!v.days||typeof v.days!=="object"||!v.progress||typeof v.progress!=="object")throw Error("Structure de sauvegarde non reconnue.");for(const [k,d] of Object.entries(v.days)){if(!/^\d{4}-\d{2}-\d{2}$/.test(k)||!d||typeof d!=="object"||!d.checks||typeof d.checks!=="object"||!d.sets||typeof d.sets!=="object")throw Error("Une journée contient des données invalides.");if(Number.isNaN(parseKey(k).getTime())||todayKey(parseKey(k))!==k)throw Error("Une date du fichier est invalide.");for(const val of Object.values(d.checks))if(typeof val!=="boolean")throw Error("Case à cocher invalide.");for(const arr of Object.values(d.sets))if(!Array.isArray(arr)||arr.some(x=>x!==undefined&&typeof x!=="boolean"))throw Error("Série invalide.");}if(!Number.isInteger(v.progress.push)||v.progress.push<0||v.progress.push>=PUSH_STAGES.length||!Number.isInteger(v.progress.plank)||v.progress.plank<0||v.progress.plank>=PLANK_STAGES.length)throw Error("Étape de progression invalide.");if(!Array.isArray(v.progress.hand)||v.progress.hand.length!==HAND_STAGES.length||v.progress.hand.some(x=>typeof x!=="boolean"))throw Error("Progression handstand invalide.");if(!confirm("Importer cette sauvegarde et remplacer les données actuellement présentes dans ce navigateur ?"))return;db={...stateDefaults(),...v,days:v.days,progress:{...stateDefaults().progress,...v.progress},timerSettings:v.timerSettings&&typeof v.timerSettings==="object"?v.timerSettings:{}};saveDB();Object.values(timerObjects).forEach(t=>t.destroy());timerObjects={};renderAll(true);document.getElementById("startDate").value=db.progress.startDate||"";showToast("Données importées avec succès.")}catch(err){alert("Import impossible : "+err.message)}finally{e.target.value=""}});
+document.getElementById("resetBtn").addEventListener("click",()=>{if(!confirm("Supprimer toutes les journées enregistrées, les statistiques et les progressions ? Cette action est irréversible sans export JSON."))return;if(!confirm("Confirmation finale : veux-tu vraiment réinitialiser toutes les données ?"))return;Object.values(timerObjects).forEach(t=>t.destroy());timerObjects={};db=stateDefaults();saveDB();selectedDate=todayKey();selectedYear=parseKey(selectedDate).getFullYear();document.getElementById("startDate").value=db.progress.startDate;renderAll(true);showToast("Les données locales ont été réinitialisées.")});
+renderAll(true);
+</script>
+</body>
+</html>
